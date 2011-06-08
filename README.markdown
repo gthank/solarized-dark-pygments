@@ -5,7 +5,7 @@
 This is a simple style for [Pygments][pygments_home] that is inspired by the
 [Solarized project][solarized_home] by Ethan Schoonover.
 
-This theme is for the dark background variant of Solarized. If you're looking
+This style is for the dark background variant of Solarized. If you're looking
 for a light background version, try
 [john2x's `solarized-pygment`][light_bg_pygments].
 
@@ -15,7 +15,7 @@ for a light background version, try
 
 ## How Do I Use It?
 
-This is just a ``Style``, not a plugin, so you need to add it to the ``styles``
+This is just a `Style`, not a plugin, so you need to add it to the `styles`
 directory of your Pygments distribution. Here is an excerpt from the [relevant
 documentation][style_docs]:
 
