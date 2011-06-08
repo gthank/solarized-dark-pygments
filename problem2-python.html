@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #ffffcc }
+body  { background: #002B36; color: #93A1A1 }
+body .c { color: #586E75 } /* Comment */
+body .err { color: #93A1A1 } /* Error */
+body .g { color: #93A1A1 } /* Generic */
+body .k { color: #859900 } /* Keyword */
+body .l { color: #93A1A1 } /* Literal */
+body .n { color: #93A1A1 } /* Name */
+body .o { color: #859900 } /* Operator */
+body .x { color: #CB4B16 } /* Other */
+body .p { color: #93A1A1 } /* Punctuation */
+body .cm { color: #586E75 } /* Comment.Multiline */
+body .cp { color: #859900 } /* Comment.Preproc */
+body .c1 { color: #586E75 } /* Comment.Single */
+body .cs { color: #859900 } /* Comment.Special */
+body .gd { color: #2AA198 } /* Generic.Deleted */
+body .ge { color: #93A1A1; font-style: italic } /* Generic.Emph */
+body .gr { color: #DC322F } /* Generic.Error */
+body .gh { color: #CB4B16 } /* Generic.Heading */
+body .gi { color: #859900 } /* Generic.Inserted */
+body .go { color: #93A1A1 } /* Generic.Output */
+body .gp { color: #93A1A1 } /* Generic.Prompt */
+body .gs { color: #93A1A1; font-weight: bold } /* Generic.Strong */
+body .gu { color: #CB4B16 } /* Generic.Subheading */
+body .gt { color: #93A1A1 } /* Generic.Traceback */
+body .kc { color: #CB4B16 } /* Keyword.Constant */
+body .kd { color: #268BD2 } /* Keyword.Declaration */
+body .kn { color: #859900 } /* Keyword.Namespace */
+body .kp { color: #859900 } /* Keyword.Pseudo */
+body .kr { color: #268BD2 } /* Keyword.Reserved */
+body .kt { color: #DC322F } /* Keyword.Type */
+body .ld { color: #93A1A1 } /* Literal.Date */
+body .m { color: #2AA198 } /* Literal.Number */
+body .s { color: #2AA198 } /* Literal.String */
+body .na { color: #93A1A1 } /* Name.Attribute */
+body .nb { color: #B58900 } /* Name.Builtin */
+body .nc { color: #268BD2 } /* Name.Class */
+body .no { color: #CB4B16 } /* Name.Constant */
+body .nd { color: #268BD2 } /* Name.Decorator */
+body .ni { color: #CB4B16 } /* Name.Entity */
+body .ne { color: #CB4B16 } /* Name.Exception */
+body .nf { color: #268BD2 } /* Name.Function */
+body .nl { color: #93A1A1 } /* Name.Label */
+body .nn { color: #93A1A1 } /* Name.Namespace */
+body .nx { color: #93A1A1 } /* Name.Other */
+body .py { color: #93A1A1 } /* Name.Property */
+body .nt { color: #268BD2 } /* Name.Tag */
+body .nv { color: #268BD2 } /* Name.Variable */
+body .ow { color: #859900 } /* Operator.Word */
+body .w { color: #93A1A1 } /* Text.Whitespace */
+body .mf { color: #2AA198 } /* Literal.Number.Float */
+body .mh { color: #2AA198 } /* Literal.Number.Hex */
+body .mi { color: #2AA198 } /* Literal.Number.Integer */
+body .mo { color: #2AA198 } /* Literal.Number.Oct */
+body .sb { color: #586E75 } /* Literal.String.Backtick */
+body .sc { color: #2AA198 } /* Literal.String.Char */
+body .sd { color: #93A1A1 } /* Literal.String.Doc */
+body .s2 { color: #2AA198 } /* Literal.String.Double */
+body .se { color: #CB4B16 } /* Literal.String.Escape */
+body .sh { color: #93A1A1 } /* Literal.String.Heredoc */
+body .si { color: #2AA198 } /* Literal.String.Interpol */
+body .sx { color: #2AA198 } /* Literal.String.Other */
+body .sr { color: #DC322F } /* Literal.String.Regex */
+body .s1 { color: #2AA198 } /* Literal.String.Single */
+body .ss { color: #2AA198 } /* Literal.String.Symbol */
+body .bp { color: #268BD2 } /* Name.Builtin.Pseudo */
+body .vc { color: #268BD2 } /* Name.Variable.Class */
+body .vg { color: #268BD2 } /* Name.Variable.Global */
+body .vi { color: #268BD2 } /* Name.Variable.Instance */
+body .il { color: #2AA198 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Sums all the even-valued Fibonacci numbers less than 4,000,000.</span>
+
+<span class="sd">For more info, see http://projecteuler.net/index.php?section=problems&amp;id=2</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># Taken from the Python Decorator Library</span>
+<span class="k">class</span> <span class="nc">memoized</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator that caches a function&#39;s return value each time it is called.</span>
+
+<span class="sd">    If called later with the same arguments, the cached value is returned, and</span>
+<span class="sd">    not re-evaluated.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">args</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c"># uncachable -- for instance, passing a list as an argument.</span>
+            <span class="c"># Better to not cache than to blow up entirely.</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the function&#39;s docstring.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">__doc__</span>
+
+<span class="nd">@memoized</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the nth Fibonacci number.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="n">term</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">term</span>
+
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">term</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">term</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">find_highest_necessary_num</span><span class="p">(</span><span class="nb">max</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the highest n such that fib(n) &lt; max.&quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">n</span>
+
+<span class="k">def</span> <span class="nf">problem_two</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the sum of the even Fibonacci numbers less than 4,000,000.&quot;&quot;&quot;</span>
+    <span class="n">fibs</span> <span class="o">=</span> <span class="p">[</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">find_highest_necessary_num</span><span class="p">(</span><span class="mi">4000000</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">cur_fib</span> <span class="k">for</span> <span class="n">cur_fib</span> <span class="ow">in</span> <span class="n">fibs</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">cur_fib</span> <span class="o">%</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">problem_two</span><span class="p">()</span>
+</pre></div>
+</body>
+</html>
